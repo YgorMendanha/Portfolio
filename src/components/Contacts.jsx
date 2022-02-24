@@ -16,25 +16,37 @@ export default function Contacts(){
     }  
 
     async function sendEmail() {
-        try{
-            const {data} = await axios.post('https://portfolio-back-app.herokuapp.com/sendEmail',{
-                name: email.name,
-                subject: email.subject,
-                contact: email.contact,
-                message: email.message
-            })
-            console.log(data)
-            toast(data.message)
-            setEmail("")
-            document.getElementById("name").value = ""
-            document.getElementById("subject").value = ""
-            document.getElementById("contact").value = ""
-            document.getElementById("message").value = ""
-
-        }catch{
-            toast("Infelizmente houve um Error ao Enviar seu Email... 😢 ")
+        if( email.name == "" || email.name == undefined || email.name== null) {
+            return toast("Infelizmente houve um Error ao Enviar seu Email... 😢 ")
         }
+        if( email.subject == "" || email.subject == undefined || email.subject== null) {
+            return toast("Infelizmente houve um Error ao Enviar seu Email... 😢 ")
+        }
+        if( email.contact == "" || email.contact == undefined || email.contact== null) {
+            return toast("Infelizmente houve um Error ao Enviar seu Email... 😢 ")
+        }
+        if( email.message == "" || email.message == undefined || email.message== null) {
+            return toast("Infelizmente houve um Error ao Enviar seu Email... 😢 ")
+        }else{
+             try{
+                const {data} = await axios.post('https://portfolio-back-app.herokuapp.com/sendEmail',{
+                    name: email.name,
+                    subject: email.subject,
+                    contact: email.contact,
+                    message: email.message
+                })
+                console.log(data)
+                toast(data.message)
+                setEmail("")
+                document.getElementById("name").value = null
+                document.getElementById("subject").value = null
+                document.getElementById("contact").value = null
+                document.getElementById("message").value = null
 
+            }catch{
+                toast("Infelizmente houve um Error ao Enviar seu Email... 😢 ")
+            }
+        }
         
     }
     
