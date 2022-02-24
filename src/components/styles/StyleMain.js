@@ -27,6 +27,10 @@ export const Image = styled.img`
     height:366px;
     mask-image: none;
     -webkit-mask-image: linear-gradient(to top, transparent 15%, black 110%);
+    @media(max-width:400px){
+        width:233px;
+        height:260px;
+    }
 
 `
 

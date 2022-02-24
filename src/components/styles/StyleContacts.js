@@ -20,6 +20,9 @@ export const Contact = styled.form`
     @media(max-width:350px){
         width: 300px
     }
+    @media(max-width:300px){
+        width: 250px
+    }
     h1{
         margin: auto;
         box-shadow:0px 8px 4px -4px #ea7af4;
