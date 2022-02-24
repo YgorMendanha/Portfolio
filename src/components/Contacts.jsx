@@ -35,7 +35,6 @@ export default function Contacts(){
                     contact: email.contact,
                     message: email.message
                 })
-                console.log(data)
                 toast(data.message)
                 setEmail("")
                 document.getElementById("name").value = null
