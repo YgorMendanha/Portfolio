@@ -1,4 +1,4 @@
-import styled  from 'styled-components'
+import styled from 'styled-components'
 
 
 export const Container = styled.main` 
@@ -6,7 +6,6 @@ export const Container = styled.main`
     flex-direction: column;
     justify-content: center;
 `
-
 
 export const ProfileCard = styled.div`    
     margin-top: 50px;
@@ -22,6 +21,7 @@ export const ProfileCard = styled.div`
     }
 
 `
+
 export const Image = styled.img`
     width:333px;
     height:366px;
@@ -36,6 +36,10 @@ export const Profile = styled.div`
     h1{
         margin: 0 auto 50px auto; 
         box-shadow: 0px 8px 4px -4px #ea7af4;
+        &:hover{
+            -webkit-box-reflect: below 1px linear-gradient(transparent,#0002);
+            text-shadow: 0 0 10px #ea7af4, 0 0 10px;
+        }
         
         @media(max-width:500px){
         font-size: 1.5rem;
@@ -57,6 +61,7 @@ export const Profile = styled.div`
                 background-color: black;
                 border-radius: 12px;
                 box-shadow: 0px 0px 14px 6px black;
+                
             }            
             }
             #iconLin{
@@ -95,11 +100,37 @@ export const Profile = styled.div`
         }
         
     }
-    
-    p{
-        text-align: left;
+        
+    p{        
         font-size:15px;
-        margin-top: 30px;        
+        margin-top: 30px;
+        text-align: left;
+        height: auto;
+        @media(max-width:500px){
+        font-size: 1rem;
+        margin: 30px;   
+        }
+        div#java{
+            display: inline;
+            color:#F0DB4F;
+            &:hover{
+                text-shadow: 0 0 10px #F0DB4F, 0 0 10px;
+            }
+        }
+        div#node{
+            display: inline;
+            color:#68a063;
+            &:hover{
+                text-shadow: 0 0 10px #68a063, 0 0 10px;
+            }
+        }
+        div#react{
+            display: inline;
+            color:#61DBFB;
+            &:hover{
+                text-shadow: 0 0 10px #61DBFB, 0 0 10px;
+            }
+        }
     }
     
 `

@@ -1,8 +1,9 @@
 import { Project,
-Technology,
+
 Title,
 Slide, } from "./styles/StyleProjects";
-import { SiReact,  SiJavascript, SiTypescript, SiNodedotjs, SiExpress } from 'react-icons/si';
+import { SiReact,  SiJavascript, SiTypescript, SiNodedotjs, SiExpress, SiStyledcomponents, SiBootstrap, SiMongodb, SiJsonwebtokens, SiMaterialui, SiCss3 } from 'react-icons/si';
+import { CgArrowsExchange } from 'react-icons/cg';
 import { Splide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import { useEffect, useState } from "react";
@@ -12,26 +13,35 @@ import axios from "axios";
 
 export default function Projects(){ 
 
-    const [porjectName, setPorjectName] = useState([])
+    const [projects, setProjectsName] = useState([])
 
     useEffect(async () => {
 
-        const response = await axios('https://api.github.com/users/YgorMendanha/repos')
+        const {data} = await axios('https://api.github.com/users/YgorMendanha/repos')
 
-        const data = response.data
+        const filter = data.filter(data => {
+            if(data.name == 'Portfolio_Back-end' ){
+                return false
+            }
+            if(data.name == 'Portfolio' ){
+                return false
+            }else{
+                return true
+            }
+        } )
         
-        setPorjectName(
-            data.map((data)=>{               
-                    return(
-                        {
-                            Name: data.name,
-                            Description: data.description,
-                            Homepage: data.homepage,
-                            URLGitHub: data.svn_url,
-                            Topics: data.topics
+        setProjectsName(
+            filter.map((data)=>{ 
+                return(
+                    {
+                        Name: data.name,
+                        Description: data.description,
+                        Homepage: data.homepage,
+                        URLGitHub: data.svn_url,
+                        Topics: data.topics
 
-                        }
-                    )
+                    }
+                )
             })
         )
         
@@ -43,31 +53,7 @@ export default function Projects(){
         <Project>
             <Title>
                 <h1>Projetos</h1>
-            </Title>
-            <Technology>
-                <label htmlFor="IconReact" id="IconReact" >
-                    <input id="IconReact" type="checkbox" value="React"/>
-                    <SiReact/>
-                </label>
-                
-                <label htmlFor="IconJava" id="IconJava">
-                    <input id="IconJava" type="checkbox" value="JavaScript"/>
-                    <SiJavascript/>
-                </label>
-                <label htmlFor="IconType" id="IconType" >
-                    <input id="IconType" type="checkbox" value="TypeScript"/>
-                    <SiTypescript/>
-                </label>
-                <label htmlFor="IconNode" id="IconNode" >
-                    <input id="IconNode" type="checkbox" value="Node"/>
-                    <SiNodedotjs/>
-                </label>
-                <label htmlFor="IconEx" id="IconEx" >
-                    <input id="IconEx" type="checkbox" value="Express"/>
-                    <SiExpress/>
-                </label>
-            </Technology>       
-            
+            </Title>  
             <Splide
                 options={ {
                     breakpoints: {
@@ -86,27 +72,61 @@ export default function Projects(){
                     },
                     perPage:5,
                     type: 'loop',
-                    autoplay: true,
+                    autoplay: false,
                     arrows: 'slider',  
                     drag:true,                  
                 } }
                 >
                 {
-                     porjectName.map((projeto)=>{
+                     projects.map((project)=>{
                          return(
-                            console.log(projeto),
                             <Slide>                                
-                               <img src={`https://raw.githubusercontent.com/YgorMendanha/${projeto.Name}/main/src/_assets/img/${projeto.Name}.png`} width="200" height="300"/>
-                               <p>{projeto.Name.replace(/_/g, " ")}</p>
-                               <p id={"Description"}>{ projeto.Description}</p>
-                               <p id={"Projeto"}>{projeto.Topics.sort().map((project)=>{
-
-                                   let name = project[0].toUpperCase() + project.substr(1)
-
-                                    return (
-                                        <p id={name}>{name}</p>
-                                    )}
-                               )}</p>
+                               <img src={`https://raw.githubusercontent.com/YgorMendanha/${project.Name}/main/src/_assets/img/${project.Name}.png`} width="200" height="300"/>
+                               <p>{project.Name.replace(/_/g, " ")}</p>
+                               <p id={"Description"}>{ project.Description}</p>
+                               <div id='links'> 
+                                    <a href={project.URLGitHub} target="_blank" rel="noopener noreferrer">Codigo🔗</a>
+                                    <a href={project.Homepage} target="_blank" rel="noopener noreferrer">Online🔗</a> 
+                               </div>
+                               <div id={"Technologies"}>{project.Topics.sort().map((technologies)=>{
+                                    if(technologies=="javascript"){
+                                    return <div key={technologies} id="Javascript"><SiJavascript/></div>
+                                    }
+                                    if(technologies=="reactjs"){
+                                       return <div key={technologies} id="Reactjs"><SiReact/></div>
+                                    }
+                                    if(technologies=="nodejs"){
+                                    return <div key={technologies} id="Nodejs"><SiNodedotjs/></div>
+                                    }
+                                    if(technologies=="expressjs"){
+                                        return <div key={technologies} id="Expressjs"><SiExpress/></div>
+                                    }
+                                    if(technologies=="styled-components"){
+                                        return <div key={technologies} id="Styled-components"><SiStyledcomponents/></div>
+                                    }
+                                    if(technologies=="axios"){
+                                        return <div key={technologies} id="Axios"><CgArrowsExchange/></div>
+                                    }
+                                    if(technologies=="bootstrap"){
+                                        return <div key={technologies} id="Bootstrap"><SiBootstrap/></div>
+                                    }
+                                    if(project=="mongodb"){
+                                        return <div key={technologies} id="Mongodb"><SiMongodb/></div>
+                                    }
+                                    if(technologies=="jwt-token"){
+                                        return <div key={technologies} id="Jwt-token"><SiJsonwebtokens/></div>
+                                    }
+                                    if(technologies=="typescript"){
+                                        return <div key={technologies} id="Typescript"><SiTypescript/></div>
+                                    }
+                                    if(technologies=="material-ui"){
+                                        return <div key={technologies}  id="Mui"><SiMaterialui/></div>
+                                    }
+                                    if(technologies=="css"){
+                                        return <div key={technologies} id="Css"><SiCss3/></div>
+                                    }
+                                }
+                               )}</div>
                             </Slide>
                          )
                     })

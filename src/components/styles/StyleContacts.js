@@ -23,6 +23,10 @@ export const Contact = styled.form`
     h1{
         margin: auto;
         box-shadow:0px 8px 4px -4px #ea7af4;
+        &:hover{
+            -webkit-box-reflect: below 1px linear-gradient(transparent,#0002);
+            text-shadow: 0 0 10px #ea7af4, 0 0 10px;
+        }
     }
     .label{
         position: relative;
@@ -97,12 +101,7 @@ export const Contact = styled.form`
         color: #ea7af4;
         }   
 
-    }
-
-
-
-
-    
+    }    
 `
 export const Button = styled.div`
     justify-content: flex-end;
@@ -127,8 +126,7 @@ export const Button = styled.div`
         box-shadow: inset 0 0 30px 0 #ea7af4, 0 0 30px 0#ea7af4;
         text-shadow: 0 0 8px hsl(0 0% 100% / 0.3), 0 0 30px;
         position: relative;
-        width: auto;   
-        
+        width: auto;
         &::before{
             content: "";
             position: absolute;
@@ -140,8 +138,6 @@ export const Button = styled.div`
             filter: blur(30px);
             opacity: 0.2;
         }
-        
-    
         &:hover::before,
         &:hover::after {
         opacity: 1;

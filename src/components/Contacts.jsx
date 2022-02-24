@@ -17,25 +17,19 @@ export default function Contacts(){
 
     async function sendEmail() {
         try{
-            const {data} = await axios.post('http://localhost:8080/sendEmail',{
+            const {data} = await axios.post('https://portfolio-back-app.herokuapp.com/sendEmail',{
                 name: email.name,
                 subject: email.subject,
                 contact: email.contact,
                 message: email.message
             })
             console.log(data)
-            if(data.erros > 0){
-               return toast(data.erros, "😢")
-            }else{
-                return (
-                    toast(data.message),
-                    setEmail(""),
-                    document.getElementById("name").value = "",
-                    document.getElementById("subject").value = "",
-                    document.getElementById("contact").value = "",
-                    document.getElementById("message").value = ""
-                )
-            }
+            toast(data.message)
+            setEmail("")
+            document.getElementById("name").value = ""
+            document.getElementById("subject").value = ""
+            document.getElementById("contact").value = ""
+            document.getElementById("message").value = ""
 
         }catch{
             toast("Infelizmente houve um Error ao Enviar seu Email... 😢 ")

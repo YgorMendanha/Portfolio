@@ -2,20 +2,21 @@ import{
 Image,
 Container,
 ProfileCard,
-Profile
+Profile,
 } from './styles/StyleMain'
 import { Icon } from '@iconify/react';
 import Projects from './Projects';
 import Contact from './Contacts';
+import img from './img/img_perfil.png';
 
 export default function Main(){
     return(
         <Container>
             <ProfileCard>
-                <Image src='src/img/img_perfil.png' alt="ygor"/>
+                <Image src={img} alt="Foto de perfil"/>
                 <Profile>
                     <div>
-                         <h1>Ygor  Mendanha</h1>                                  
+                         <h1>Ygor Mendanha</h1>                                  
                     </div>
                     <div>
                         <a href="https://github.com/YgorMendanha" target="_blank" rel="noopener noreferrer" > <Icon icon="teenyicons:github-solid" id="iconGit" /> </a>
@@ -26,13 +27,13 @@ export default function Main(){
                     </div>
                     
                     <p>
-                        Meu nome Ygor, tenho 23 Anos
+                        Meu nome é Ygor e tenho 23 Anos
                     </p>
                     <p>
-                        Meu Trabalho é usar o JavaScript para colocar sua ideia na internet
+                        Meu Trabalho é usar o <div id="java">JavaScript</div> para colocar sua ideia na internet
                     </p>
                     <p>
-                        O React juntamente com o Node vão me ajudar a fazer isso.
+                        O <div id="react">ReactJs</div> juntamente com o <div id="node">NodeJs</div> vão me ajudar a fazer isso.
                     </p>
                 </Profile>
             </ProfileCard>    
