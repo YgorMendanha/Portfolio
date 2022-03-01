@@ -20,18 +20,16 @@ import axios from 'axios'
 
 export default function Projects() {
 	const [projects, setProjectsName] = useState([])
-	const [filterprojects, setFilterProjects] = useState([
-		'Portfolio_Back-end',
-		'Portfolio',
-	])
 
 	useEffect(async () => {
 		const { data } = await axios(
 			'https://api.github.com/users/YgorMendanha/repos'
 		)
-		console.log(data)
 
 		const filter = data.filter(data => {
+			if (data.name == 'YgorMendanha') {
+				return false
+			}
 			if (data.name == 'Chat_app_Back-end') {
 				return false
 			}
