@@ -27,22 +27,25 @@ export default function Projects() {
 		)
 
 		const filter = data.filter(data => {
-			if (data.name == 'YgorMendanha') {
+			if (data.name === 'YgorMendanha') {
 				return false
 			}
-			if (data.name == 'E-commerce_Front ') {
+			if (data.name === 'E-commerce_Front') {
 				return false
 			}
-			if (data.name == 'Chat_app_Back-end') {
+			if (data.name === 'E-commerce_Back') {
 				return false
 			}
-			if (data.name == 'NotePad_Back-end') {
+			if (data.name === 'Chat_app_Back-end') {
 				return false
 			}
-			if (data.name == 'Portfolio_Back-end') {
+			if (data.name === 'NotePad_Back-end') {
 				return false
 			}
-			if (data.name == 'Portfolio') {
+			if (data.name === 'Portfolio_Back-end') {
+				return false
+			}
+			if (data.name === 'Portfolio') {
 				return false
 			} else {
 				return true
@@ -91,7 +94,7 @@ export default function Projects() {
 				}}>
 				{projects.map(project => {
 					return (
-						<Slide>
+						<Slide key={project}>
 							<img
 								src={`https://raw.githubusercontent.com/YgorMendanha/${project.Name}/main/src/_assets/img/${project.Name}.png`}
 								width="200"
@@ -117,90 +120,91 @@ export default function Projects() {
 							</div>
 							<div id={'Technologies'}>
 								{project.Topics.sort().map(technologies => {
-									if (technologies == 'javascript') {
+									if (technologies === 'javascript') {
 										return (
 											<div key={technologies} id="Javascript">
 												<SiJavascript />
 											</div>
 										)
 									}
-									if (technologies == 'reactjs') {
+									if (technologies === 'reactjs') {
 										return (
 											<div key={technologies} id="Reactjs">
 												<SiReact />
 											</div>
 										)
 									}
-									if (technologies == 'nodejs') {
+									if (technologies === 'nodejs') {
 										return (
 											<div key={technologies} id="Nodejs">
 												<SiNodedotjs />
 											</div>
 										)
 									}
-									if (technologies == 'expressjs') {
+									if (technologies === 'expressjs') {
 										return (
 											<div key={technologies} id="Expressjs">
 												<SiExpress />
 											</div>
 										)
 									}
-									if (technologies == 'styled-components') {
+									if (technologies === 'styled-components') {
 										return (
 											<div key={technologies} id="Styled-components">
 												<SiStyledcomponents />
 											</div>
 										)
 									}
-									if (technologies == 'axios') {
+									if (technologies === 'axios') {
 										return (
 											<div key={technologies} id="Axios">
 												<CgArrowsExchange />
 											</div>
 										)
 									}
-									if (technologies == 'bootstrap') {
+									if (technologies === 'bootstrap') {
 										return (
 											<div key={technologies} id="Bootstrap">
 												<SiBootstrap />
 											</div>
 										)
 									}
-									if (project == 'mongodb') {
+									if (project === 'mongodb') {
 										return (
 											<div key={technologies} id="Mongodb">
 												<SiMongodb />
 											</div>
 										)
 									}
-									if (technologies == 'jwt-token') {
+									if (technologies === 'jwt-token') {
 										return (
 											<div key={technologies} id="Jwt-token">
 												<SiJsonwebtokens />
 											</div>
 										)
 									}
-									if (technologies == 'typescript') {
+									if (technologies === 'typescript') {
 										return (
 											<div key={technologies} id="Typescript">
 												<SiTypescript />
 											</div>
 										)
 									}
-									if (technologies == 'material-ui') {
+									if (technologies === 'material-ui') {
 										return (
 											<div key={technologies} id="Mui">
 												<SiMaterialui />
 											</div>
 										)
 									}
-									if (technologies == 'css') {
+									if (technologies === 'css') {
 										return (
 											<div key={technologies} id="Css">
 												<SiCss3 />
 											</div>
 										)
 									}
+									return null
 								})}
 							</div>
 						</Slide>
