@@ -30,6 +30,9 @@ export default function Projects() {
 			if (data.name == 'YgorMendanha') {
 				return false
 			}
+			if (data.name == 'E-commerce_Front ') {
+				return false
+			}
 			if (data.name == 'Chat_app_Back-end') {
 				return false
 			}
