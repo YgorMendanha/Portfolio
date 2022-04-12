@@ -2,13 +2,13 @@ import { Image, Container, ProfileCard, Profile } from './styles/StyleMain'
 import { Icon } from '@iconify/react'
 import Projects from './Projects'
 import Contact from './Contacts'
-import img from './img/img_perfil.png'
+import imgperfil from './img/img_perfil.png'
 
 export default function Main() {
 	return (
 		<Container>
 			<ProfileCard>
-				<Image src={img} alt="Foto de perfil" />
+				<Image src={imgperfil} alt="Foto de perfil" />
 				<Profile>
 					<div>
 						<h1>Ygor Mendanha</h1>

@@ -17,6 +17,7 @@ import { Splide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import TestImg from './img/Code_test.png'
 
 export default function Projects() {
 	const [projects, setProjectsName] = useState([])
@@ -25,6 +26,7 @@ export default function Projects() {
 		const { data } = await axios(
 			'https://api.github.com/users/YgorMendanha/repos'
 		)
+		console.log(data)
 
 		const filter = data.filter(data => {
 			if (data.name === 'YgorMendanha') {
@@ -98,11 +100,21 @@ export default function Projects() {
 				{projects.map(project => {
 					return (
 						<Slide key={project}>
+
+							{project.Name === 'Code_Test' ? (
+							<img
+								src={TestImg}
+								width="200"
+								height="300"
+							/>
+							):(
 							<img
 								src={`https://raw.githubusercontent.com/YgorMendanha/${project.Name}/main/src/_assets/img/${project.Name}.png`}
 								width="200"
 								height="300"
 							/>
+							)}
+							
 							<p>{project.Name.replace(/_/g, ' ')}</p>
 							<p id={'Description'}>{project.Description}</p>
 							<div id="links">
