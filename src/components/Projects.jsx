@@ -32,6 +32,12 @@ export default function Projects() {
 			if (data.name === 'YgorMendanha') {
 				return false
 			}
+			if (data.name === 'Verzel_front') {
+				return false
+			}
+			if (data.name === 'Verzel_server') {
+				return false
+			}
 			if (data.name === 'E-commerce_Front') {
 				return false
 			}
