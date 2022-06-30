@@ -26,9 +26,11 @@ export default function Projects() {
 		const { data } = await axios(
 			'https://api.github.com/users/YgorMendanha/repos'
 		)
-		console.log(data)
 
 		const filter = data.filter(data => {
+			if (data.name === 'challenge-full-stack-web') {
+				return false
+			}
 			if (data.name === 'YgorMendanha') {
 				return false
 			}
